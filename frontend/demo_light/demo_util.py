@@ -514,13 +514,13 @@ def set_storm_runner():
         search_top_k=3,
         retrieve_top_k=5
     )
-
+    
     if st.secrets['RETRIEVER'] == 'bing':
-        rm = BingSearch(bing_search_api=st.secrets['API_KEY'], k=engine_args.search_top_k)
+        rm = BingSearch(bing_search_api=st.secrets['BING_SEARCH_API_KEY'], k=engine_args.search_top_k)
     elif st.secrets['RETRIEVER'] == 'you':
-        rm = YouRM(ydc_api_key=st.secrets['API_KEY'], k=engine_args.search_top_k)
+        rm = YouRM(ydc_api_key=st.secrets['YDC_API_KEY'], k=engine_args.search_top_k)
     elif st.secrets['RETRIEVER'] == 'brave':
-        rm = BraveRM(brave_search_api_key=st.secrets['API_KEY'], k=engine_args.search_top_k)
+        rm = BraveRM(brave_search_api_key=st.secrets['BRAVE_SEARCH_API_KEY'], k=engine_args.search_top_k)
 
     runner = STORMWikiRunner(engine_args, llm_configs, rm)
     st.session_state["runner"] = runner
