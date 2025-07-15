@@ -13,5 +13,4 @@ jobs:
       - uses: actions/setup-python@v2
       - uses: psf/black@stable
         with:
-          options: "--check"
-          src: "knowledge_storm"
+          black_args: "knowledge_storm --check"
